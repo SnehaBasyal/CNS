@@ -27,8 +27,66 @@ becomes C. To change a message back, each letter is replaced by the one three be
 ### STEP-5: Display the cipher text obtained above.
 
 
-PROGRAM :-
+## PROGRAM :
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() 
+{
+    char plain[100], cipher[100];
+    int key, i, length;
+    printf("Enter the plain text: ");
+    scanf("%s", plain);
+    printf("Enter the key value: ");
+    scanf("%d", &key);
+    printf("\nPLAIN TEXT: %s", plain);
+    printf("\nENCRYPTED TEXT: ");
+    length = strlen(plain);
+    for (i = 0; i < length; i++) 
+    {
+        cipher[i] = plain[i] + key;
+        if (isupper(plain[i]) && cipher[i] > 'Z') 
+        {
+            cipher[i] = cipher[i] - 26;
+            
+        }
+        if (islower(plain[i]) && cipher[i] > 'z') 
+        {
+            cipher[i] = cipher[i] - 26;
+            
+        }
+        printf("%c", cipher[i]);
+        
+    }
+    cipher[length] = '\0'; 
+    printf("\nDECRYPTED TEXT: ");
+    for (i = 0; i < length; i++) 
+    {
+        plain[i] = cipher[i] - key;
+        if (isupper(cipher[i]) && plain[i] < 'A') 
+        {
+            plain[i] = plain[i] + 26;
+            
+        }
+        if (islower(cipher[i]) && plain[i] < 'a') 
+        {
+            plain[i] = plain[i] + 26;
+            
+        }
+        printf("%c", plain[i]);
+        
+    }
+    plain[length] = '\0'; 
+    return 0;
+}
+```
+
+## OUTPUT :
+![image](https://github.com/user-attachments/assets/32846bdc-5bc8-43d5-9391-39e61e5c7f42)
 
 
+## RESULT:
+ The program is executed and the result is obtained.
 
-OUTPUT :-
+
